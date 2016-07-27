@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Create Item</title>
+	</head>
+	<body>
+		
+		<a href="{% url 'my_login_home' %}">Home</a>
+		<a href="{% url 'my_login_logout' %}">Log out</a>
+
+		<h1>Create a New Wish Liste Item</h1>
+		<form action="{% url 'create_item' %}" method="POST">
+			{% csrf_token %}
+			<p>Item/Prodcut: <input type="text" name="name"></p>
+			<input type="submit" value="Add">
+		</form>
+{% if messages %}
+<ul class="messages">
+	{% for message in messages %}
+	<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} </li>
+	{% endfor %}
+</ul>
+{% endif %}
+	</body>
+</html>

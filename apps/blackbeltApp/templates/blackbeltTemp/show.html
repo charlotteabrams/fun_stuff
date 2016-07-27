@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{item.name}}</title>
+	</head>
+	<body>
+		<a href="{% url 'my_login_logout' %}">Log out</a>
+		<a href="{% url 'my_login_home' %}">Home</a>
+
+		<h1>{{item.name}}</h1>
+
+		<p>Users who added this product/item under their wishlist:</p>
+
+		{% if item.userswant.all %}
+			<ul>
+				{% for userwant in item.userswant.all %}
+					<li>{{userwant.name}}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+	</body>
+</html>
